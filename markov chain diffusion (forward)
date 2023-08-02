@@ -1,0 +1,13 @@
+FORMULA - "mean = sqrt(a_hat_t)*x_0"
+"variance = sqrt(1-a_hat_t)*random_noise"
+
+import torch
+## Creating tensor - 32x32 for "dissolving" 
+
+x0=torch.randn(2,3,32,32)
+betas = torch.tensor([0.05,0.1,0.15,0.2,0.25])
+t = torch.tensor([1,3])
+alphas = 1 - betas
+alpha_hat = torch.cumprod(alphas, axis = 0)
+###Check alphas values <1
+print(alphas)
